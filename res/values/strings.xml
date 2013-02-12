@@ -2,7 +2,14 @@
 <resources>
 
     <string name="app_name">Paint Me A Picture</string>
+    <string name="player1name">Enter Player 1's Name</string>
+    <string name="player2name">Enter Player 2\'s Name</string>
+    <string name="playButtonString">Let\'s Play!</string>
+    <string name="logoPictureDesc">Game Logo Picture</string>
+    <string name="teamLogo">Team Logo Picture</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <string name="title_activity_drawing">DrawingActivity</string>
+    <string name="title_activity_guessing">GuessingActivity</string>
 
 </resources>

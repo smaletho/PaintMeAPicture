@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="edu.msu.project1.barrelofmonkeys.DrawingActivity"
+            android:label="@string/title_activity_drawing" >
+        </activity>
+        <activity
+            android:name="edu.msu.project1.barrelofmonkeys.GuessingActivity"
+            android:label="@string/title_activity_guessing" >
+        </activity>
     </application>
 
 </manifest>
