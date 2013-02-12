@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Paint Me A Picture</string>
-    <string name="player1name">Enter Player 1's Name</string>
+    <string name="player1name">Enter Player 1\'s Name</string>
     <string name="player2name">Enter Player 2\'s Name</string>
     <string name="playButtonString">Let\'s Play!</string>
     <string name="logoPictureDesc">Game Logo Picture</string>
