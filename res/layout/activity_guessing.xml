@@ -1,23 +1,60 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="right"
+    android:gravity="right"
+    android:orientation="vertical"
     tools:context=".GuessingActivity" >
 
-    <EditText
-        android:id="@+id/editText1"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/guessPlaceholder" >
+        android:layout_weight="1" >
 
-        <requestFocus />
-    </EditText>
+        <TextView
+            android:id="@+id/hintText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Hint"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <edu.msu.project1.barrelofmonkeys.DraingView
-        android:id="@+id/draingView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/timerText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.10"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Timer"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </LinearLayout>
+
+    <edu.msu.project1.barrelofmonkeys.DrawingView
+        android:id="@+id/drawingView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="10" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/guessBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/guessPlaceholder" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/submitButtonText" />
+    </LinearLayout>
 
 </LinearLayout>

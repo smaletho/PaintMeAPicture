@@ -23,8 +23,8 @@
         android:ems="10" >
     </EditText>
 
-    <edu.msu.project1.barrelofmonkeys.DraingView
-        android:id="@+id/draingView1"
+    <edu.msu.project1.barrelofmonkeys.DrawingView
+        android:id="@+id/drawingView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

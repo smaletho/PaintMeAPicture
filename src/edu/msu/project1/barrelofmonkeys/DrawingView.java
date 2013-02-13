@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class DraingView extends View {
+public class DrawingView extends View {
 
 	private class Line implements Parcelable {
 		public ArrayList<Point> mPoints = new ArrayList<Point>();
@@ -42,17 +42,17 @@ public class DraingView extends View {
 		}
 	}
 	
-	public DraingView(Context context) {
+	public DrawingView(Context context) {
 		super(context);
 		// TODO Auto-generated constructor stub
 	}
 
-	public DraingView(Context context, AttributeSet attrs) {
+	public DrawingView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
 	}
 
-	public DraingView(Context context, AttributeSet attrs, int defStyle) {
+	public DrawingView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		// TODO Auto-generated constructor stub
 	}

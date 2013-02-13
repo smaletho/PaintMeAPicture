@@ -13,4 +13,5 @@
     <string name="title_activity_guessing">GuessingActivity</string>
 	<string name="hintPlaceholder">Please enter a hint.</string>
 	<string name="guessPlaceholder">What is your guess?</string>
+	<string name="submitButtonText">Guess!</string>
 </resources>
