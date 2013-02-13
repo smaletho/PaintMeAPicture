@@ -11,5 +11,6 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_drawing">DrawingActivity</string>
     <string name="title_activity_guessing">GuessingActivity</string>
-
+	<string name="hintPlaceholder">Please enter a hint.</string>
+	<string name="guessPlaceholder">What is your guess?</string>
 </resources>
