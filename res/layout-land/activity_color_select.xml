@@ -8,20 +8,22 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="192dp"
+        android:layout_centerVertical="true"
         android:padding="@dimen/paddingTop"
         android:text="@string/sampleLineText"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
         android:onClick="onDone"
+        android:padding="@dimen/padding20"
+        android:paddingLeft="@dimen/padding40"
+        android:paddingRight="@dimen/padding20"
         android:text="@string/doneButton" />
 
 </RelativeLayout>

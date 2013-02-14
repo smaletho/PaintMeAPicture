@@ -19,11 +19,10 @@
     <string name="categoryString">Category Will Go Here</string>
     <string name="nameDrawing">Please Name Drawing</string>
     <string name="submitDrawingText">Submit Drawing</string>
-    <string name="lineColor">Line Color</string>
-    <string name="lineWidth">Line Width</string>
+    <string name="lineProperties">Line Color/Width</string>
     <string name="title_activity_color_selected">ColorSelectedActivity</string>
     <string name="title_activity_color_select">ColorSelectActivity</string>
-    <string name="sampleColorText">Color Selection Functionality Will Go Here</string>
+    <string name="sampleLineText">Line properties will be chosen here.</string>
     <string name="title_activity_hint_selection">HintSelectionActivity</string>
     <string name="doneButton">Done</string>
     <string name="drawingNamePlaceholder">Name of drawing</string>

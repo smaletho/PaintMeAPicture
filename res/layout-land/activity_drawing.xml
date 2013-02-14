@@ -13,26 +13,6 @@
         android:layout_toLeftOf="@+id/donebutton" />
 
     <Button
-        android:id="@+id/colorselect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/donebutton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:onClick="onLineColor"
-        android:text="@string/lineColor" />
-
-    <Button
-        android:id="@+id/linewidth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/colorselect"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/colorselect"
-        android:layout_marginTop="16dp"
-        android:text="@string/lineWidth" />
-
-    <Button
         android:id="@+id/donebutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,5 +20,15 @@
         android:layout_alignParentRight="true"
         android:onClick="onSubmit"
         android:text="@string/submitDrawingText" />
+
+    <Button
+        android:id="@+id/colorselect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/donebutton"
+        android:layout_marginBottom="16dp"
+        android:layout_toRightOf="@+id/drawingView1"
+        android:onClick="onLineProperties"
+        android:text="@string/lineProperties" />
 
 </RelativeLayout>

@@ -5,38 +5,32 @@
     android:orientation="vertical"
     tools:context=".DrawingActivity" >
 
-    <Button
-        android:id="@+id/donebutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="onSubmit"
-        android:text="@string/submitDrawingText" />
-
-    <Button
-        android:id="@+id/colorselect"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/donebutton"
-        android:layout_alignParentLeft="true"
-        android:onClick="onLineColor"
-        android:text="@string/lineColor" />
-
-    <Button
-        android:id="@+id/linewidth"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/colorselect"
-        android:layout_centerHorizontal="true"
-        android:text="@string/lineWidth" />
-
     <edu.msu.project1.barrelofmonkeys.DrawingView
         android:id="@+id/drawingView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/linewidth"
+        android:layout_above="@+id/colorselect"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/colorselect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:onClick="onLineProperties"
+        android:padding="@dimen/paddingTop"
+        android:text="@string/lineProperties" />
+
+    <Button
+        android:id="@+id/donebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/drawingView1"
+        android:onClick="onSubmit"
+        android:padding="@dimen/paddingTop"
+        android:text="@string/submitDrawingText" />
 
 </RelativeLayout>

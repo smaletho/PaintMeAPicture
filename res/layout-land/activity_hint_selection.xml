@@ -15,27 +15,25 @@
         android:text="@string/doneButton" />
 
     <EditText
-        android:id="@+id/drawingName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:ems="10"
-        android:hint="@string/drawingNamePlaceholder"
-        android:inputType="text" >
-
-        <requestFocus />
-    </EditText>
-
-    <EditText
         android:id="@+id/drawingHint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/drawingName"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="77dp"
         android:ems="10"
         android:hint="@string/hintPlaceholder"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/drawingName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="41dp"
+        android:ems="10"
+        android:hint="@string/drawingNamePlaceholder"
         android:inputType="text" />
 
 </RelativeLayout>
