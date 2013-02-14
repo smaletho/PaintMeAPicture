@@ -11,7 +11,7 @@
         android:id="@+id/categoryText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.01"
+        android:layout_weight="1"
         android:background="@android:color/darker_gray"
         android:gravity="center_horizontal"
         android:paddingBottom="20dp"
@@ -22,7 +22,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.01" >
+        android:layout_weight="1" >
 
         <TextView
             android:id="@+id/timerText"
@@ -45,12 +45,12 @@
         android:id="@+id/drawingView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_weight="50" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.01" >
+        android:layout_weight="1" >
 
         <EditText
             android:id="@+id/guessBox"
@@ -64,6 +64,8 @@
             android:id="@+id/submitButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="center_vertical|center_horizontal"
             android:onClick="isCorrect"
             android:text="@string/submitButtonText" />
 

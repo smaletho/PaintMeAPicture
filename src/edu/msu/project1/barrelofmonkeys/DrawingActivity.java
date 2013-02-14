@@ -6,6 +6,9 @@ import android.view.Menu;
 
 public class DrawingActivity extends Activity {
 
+	//Make a button so that when they're done, it passes the drawing,
+	//the hint and the answer to the guessing activity
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

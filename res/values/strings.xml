@@ -14,4 +14,7 @@
 	<string name="hintPlaceholder">Please enter a hint.</string>
 	<string name="guessPlaceholder">What is your guess?</string>
 	<string name="submitButtonText">Guess!</string>
+	<string name="hintString">Hint Appears Here</string>
+	<string name="timerString">Timer Goes Here</string>
+	<string name="categoryString">Category Will Go Here</string>
 </resources>
