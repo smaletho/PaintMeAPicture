@@ -2,8 +2,6 @@ package edu.msu.project1.barrelofmonkeys;
 
 import java.io.Serializable;
 
-import edu.msu.cse.smaletho.madhatter.HatterView.Parameters;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -12,15 +10,18 @@ import android.widget.EditText;
 
 public class MainActivity extends Activity {
 
-	private static class Parameters implements Serializable {
+	/*private static class Parameters implements Serializable {
+
+		private static final long serialVersionUID = 1L;
+		
 		private String player1name;
 		private String player2name;
-	}
+	}*/
 	
     /**
      * The current parameters
      */
-    private Parameters params = new Parameters();
+    //private Parameters params = new Parameters();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +40,8 @@ public class MainActivity extends Activity {
 		EditText pl1 = (EditText)findViewById(R.id.player1name);
 		EditText pl2 = (EditText)findViewById(R.id.player2name);
 		
-		params.player1name = pl1.getText().toString();
-		params.player2name = pl2.getText().toString();
+		//params.player1name = pl1.getText().toString();
+		//params.player2name = pl2.getText().toString();
 	}
 	
     @Override
