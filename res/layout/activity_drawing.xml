@@ -1,31 +1,42 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".DrawingActivity" >
 
-    <Spinner
-        android:id="@+id/spinnerLineColor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Spinner
-        android:id="@+id/spinnerLineWeight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <EditText
-        android:id="@+id/editTextHint"
-        android:hint="@string/hintPlaceholder"
+    <Button
+        android:id="@+id/donebutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10" >
-    </EditText>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="onSubmit"
+        android:text="@string/submitDrawingText" />
+
+    <Button
+        android:id="@+id/colorselect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/donebutton"
+        android:layout_alignParentLeft="true"
+        android:onClick="onLineColor"
+        android:text="@string/lineColor" />
+
+    <Button
+        android:id="@+id/linewidth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/colorselect"
+        android:layout_centerHorizontal="true"
+        android:text="@string/lineWidth" />
 
     <edu.msu.project1.barrelofmonkeys.DrawingView
         android:id="@+id/drawingView1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linewidth"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
-</LinearLayout>
+</RelativeLayout>
