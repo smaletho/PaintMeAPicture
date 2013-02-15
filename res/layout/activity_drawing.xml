@@ -1,17 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     tools:context=".DrawingActivity" >
-
-    <edu.msu.project1.barrelofmonkeys.DrawingView
-        android:id="@+id/drawingView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/colorselect"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/colorselect"
@@ -27,10 +18,17 @@
         android:id="@+id/donebutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/drawingView1"
         android:onClick="onSubmit"
         android:padding="@dimen/paddingTop"
         android:text="@string/submitDrawingText" />
+
+    <edu.msu.project1.barrelofmonkeys.DrawingView
+        android:id="@+id/drawingView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/colorselect"
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>

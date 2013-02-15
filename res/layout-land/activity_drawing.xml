@@ -6,7 +6,7 @@
     tools:context=".DrawingActivity" >
 
     <edu.msu.project1.barrelofmonkeys.DrawingView
-        android:id="@+id/drawingView1"
+        android:id="@+id/drawingView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/donebutton"
         android:layout_marginBottom="16dp"
-        android:layout_toRightOf="@+id/drawingView1"
+        android:layout_toRightOf="@+id/drawingView"
         android:onClick="onLineProperties"
         android:text="@string/lineProperties" />
 

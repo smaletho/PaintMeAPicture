@@ -1,8 +1,9 @@
 package edu.msu.project1.barrelofmonkeys;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
@@ -27,7 +28,8 @@ public class DrawingActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_drawing);
-//		drawingView = (DrawingView) this.findViewById(R.id.drawingView1);
+		drawingView = (DrawingView) this.findViewById(R.id.drawingView);
+		Log.i("SIZE", "Drawing view is: "+drawingView.getWidth()+"x"+drawingView.getHeight());
 	}
 
 	/*@Override
