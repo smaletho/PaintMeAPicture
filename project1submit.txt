@@ -1,0 +1,36 @@
+
+Project 1 Submission
+
+Group Name:   Barrel of Monkeys
+
+When you have completed the project, complete the following form and include it with your project. Include this file as a text file in the folder with your project when you turn it in. 
+
+Names of all classes responsible for storing the drawing:
+
+	DrawingView.java
+
+Member 1: Thomas Smale
+
+Responsiblity: Guessing Activity
+	GuessingActivity.java
+	ScoreActivity.java
+
+
+
+Member 2: Clay Reimann
+
+Responsiblity: Drawing View
+	DrawingView.java
+
+
+
+Member 3: Phil Getzen
+
+Responsiblity: Drawing Activity
+	DrawingActivity.java
+	HintSelectionActivity.java
+	HintSelectionView.java
+	LineSelectActivity.java
+	LineSelectView.java
+
+

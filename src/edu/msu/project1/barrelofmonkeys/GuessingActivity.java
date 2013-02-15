@@ -3,6 +3,7 @@ package edu.msu.project1.barrelofmonkeys;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -36,14 +37,17 @@ public class GuessingActivity extends Activity {
 		};
 	}
 
-	public boolean isCorrect(View view) {
+	public void isCorrect(View view) {
 	
-		EditText et1 = (EditText)findViewById(R.id.guessBox);
+		Intent intent = new Intent(this, ScoreActivity.class);
+		startActivity(intent);
+		
+		/*EditText et1 = (EditText)findViewById(R.id.guessBox);
 		
 		if(et1.getText().equals(pictureSolution)){
 			return true;
 		}
-		return false;
+		return false;*/
 	}
 	
 	@Override

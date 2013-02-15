@@ -54,17 +54,46 @@
 
         <EditText
             android:id="@+id/guessBox"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:ems="10"
             android:hint="@string/guessPlaceholder" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="@color/blue"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingLeft="80dp"
+            android:paddingRight="80dp"
+            android:text="@string/player1scoreString"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="@color/red"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingLeft="80dp"
+            android:paddingRight="80dp"
+            android:text="@string/player2scoreString"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white" />
+
         <Button
             android:id="@+id/submitButton"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
             android:gravity="center_vertical|center_horizontal"
             android:onClick="isCorrect"
             android:text="@string/submitButtonText" />
