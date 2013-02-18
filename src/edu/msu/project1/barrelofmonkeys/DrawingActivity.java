@@ -5,9 +5,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ToggleButton;
 
 public class DrawingActivity extends Activity {
 
@@ -15,6 +15,9 @@ public class DrawingActivity extends Activity {
 	 * The drawing view in this activity's view
 	 */
 	private DrawingView drawingView;
+	private ToggleButton drawingToggle;
+	
+	private boolean isDrawing = true;
 	
 	/*
 	 * The players
@@ -30,6 +33,7 @@ public class DrawingActivity extends Activity {
 		setContentView(R.layout.activity_drawing);
 		
 		drawingView = (DrawingView) this.findViewById(R.id.drawingView);
+		drawingToggle = (ToggleButton) this.findViewById(R.id.toggleButtonDraw);
 		if(savedInstanceState != null) {
 			drawingView.loadDrawing(savedInstanceState);
 		}
@@ -52,7 +56,8 @@ public class DrawingActivity extends Activity {
 		Intent intent = new Intent(this, HintSelectionActivity.class);
 		startActivity(intent);
 	}
-	public void onLineProperties(View view) {
+	
+	public void onLineWidth(View view) {
 		String[] widthNames = {"Pencil", "Thinner", "Thin", "Thick", "Thicker", "Thickest"};
 		
 		AlertDialog.Builder b = new AlertDialog.Builder(this);
@@ -65,6 +70,16 @@ public class DrawingActivity extends Activity {
 				dialog.dismiss();
 			}
 		}).show();
+		
+	}
+	
+	public void onLineColor(View view) {
+		
+	}
+	
+	public void onToggleDraw(View view) {
+		isDrawing = !isDrawing;
+		drawingView.toggleDraw(isDrawing);
 		
 	}
 	

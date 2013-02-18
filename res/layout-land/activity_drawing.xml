@@ -22,13 +22,28 @@
         android:text="@string/submitDrawingText" />
 
     <Button
-        android:id="@+id/colorselect"
+        android:id="@+id/buttonLineWidth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonLineColor"
+        android:layout_toRightOf="@+id/drawingView"
+        android:onClick="onLineProperties"
+        android:text="@string/lineWidth" />
+
+    <ToggleButton
+        android:id="@+id/toggleButtonDraw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/donebutton"
-        android:layout_marginBottom="16dp"
-        android:layout_toRightOf="@+id/drawingView"
-        android:onClick="onLineProperties"
-        android:text="@string/lineProperties" />
+        android:layout_alignLeft="@+id/donebutton"
+        android:text="@string/drawing" />
+
+    <Button
+        android:id="@+id/buttonLineColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/toggleButtonDraw"
+        android:layout_alignLeft="@+id/toggleButtonDraw"
+        android:text="@string/lineColor" />
 
 </RelativeLayout>
