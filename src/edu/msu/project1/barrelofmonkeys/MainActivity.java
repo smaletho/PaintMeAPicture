@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -52,6 +54,20 @@ public class MainActivity extends Activity {
         super.onSaveInstanceState(outState);
         
         
+    }
+    
+    public void onHowToPlay(View view) {
+    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(R.string.howToPlayTitle);
+		builder.setMessage(R.string.howToPlayText);
+		builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+	           public void onClick(DialogInterface dialog, int id) {
+	        	   //
+	           }
+	       });
+		
+		AlertDialog dialog = builder.create();
+		dialog.show();
     }
 
 }

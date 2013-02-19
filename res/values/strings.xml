@@ -15,9 +15,9 @@
     <string name="hintPlaceholder">Please enter a hint.</string>
     <string name="guessPlaceholder">What is your guess?</string>
     <string name="submitButtonText">Guess!</string>
-    <string name="hintString">Hint Appears Here</string>
-    <string name="timerString">Timer Goes Here</string>
-    <string name="categoryString">Category Will Go Here</string>
+    <string name="hintString"></string>
+    <string name="timerString">Time Remaining</string>
+    <string name="categoryString">Category</string>
     <string name="nameDrawing">Please Name Drawing</string>
     <string name="submitDrawingText">Submit Drawing</string>
     <string name="lineProperties">Line Color/Width</string>
@@ -27,6 +27,21 @@
     <string name="title_activity_hint_selection">HintSelectionActivity</string>
     <string name="doneButton">Done</string>
     <string name="drawingNamePlaceholder">Name of drawing</string>
+    <string name="switchToGuessTitle">Pass the device to the other player!</string>
+   	<string name="ok">Okay!</string>
+   	<string name="correctGuess">You got it!</string>
+   	<string name="guessAgain">Nope! Guess again!</string>
+   	<string name="timeExpired">You ran out of time!</string>
+   	<string name="howToPlayTitle">How To Play</string>
+   	<string name="howToPlayText">Enter both players\' names and click "Let\'s Play".\n\n
+   	    						 Player 1 draws a picture from the associated category.\n\n
+   	    						 Player 1 enters the answer to the picture, then an associated hint.\n\n
+   	    						 The device is then passed to Player 2.\n\n
+   	    						 Player 2 has 130 seconds to guess.\n\n
+   	    						 After 70 seconds, a hint will appear.\n\n
+   	    						 Players swap turns.\n\n
+   	    						 Score is calculated from how quickly the guess was correct.\n\n
+   	    						 Enjoy!</string>
 
     <color name="red">#FF0000</color>
     <color name="blue">#0008FF</color>

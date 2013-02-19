@@ -12,6 +12,7 @@
         android:layout_height="0dp"
         android:layout_weight="12"
         android:contentDescription="@string/logoPictureDesc"
+        android:onClick="onHowToPlay"
         android:padding="20dp"
         android:src="@drawable/main_label" />
 
@@ -50,6 +51,15 @@
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
             android:text="@string/playButtonString" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/button1"
+            android:layout_alignRight="@+id/button1"
+            android:layout_below="@+id/button1"
+            android:text="@string/howToPlayTitle" />
 
     </RelativeLayout>
 
