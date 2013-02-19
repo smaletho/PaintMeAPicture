@@ -99,13 +99,13 @@ public class Line implements Parcelable {
 		mPaint.setColor(color);
 	}
 	
-	public boolean addPoint(int x, int y) {
+	public boolean addPoint(int x, int y, float zoom) {
 		if(mNumPoints == 0) {
 			mPath.moveTo(x, y);
 		}
 		
 		double dist = Math.sqrt((x - mLastPoint.x) * (x - mLastPoint.x) + (y - mLastPoint.y) * (y - mLastPoint.y));
-		if(dist > POINT_SEPARATION) {
+		if(dist > POINT_SEPARATION / zoom) {
 			if(mNumPoints >= mPoints.size()) {
 				for(int i = 0; i < ALLOCATION_SIZE; i++) {
 					mPoints.add(new Point(-1, -1));

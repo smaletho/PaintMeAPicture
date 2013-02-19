@@ -15,6 +15,33 @@ public class DrawingView extends View {
 	
 	public String USER_DRAWING_KEY = "edu.msu.monkies.drawing.user_data";
 	
+	private class Touch {
+		public float x = 0;
+		public float y = 0;
+		
+		public float lastX = 0;		
+		public float lastY = 0;
+		
+		public int id = -1;
+		
+		public void clearTouch() {
+			id = -1;
+			x = lastX = y = lastY = 0;
+		}
+		
+		public void copyToLast() {
+			lastX = x;
+			lastY = y;
+		}
+		
+		public float dx() {
+			return x - lastX;
+		}
+		public float dy() {
+			return y - lastY;
+		}
+	}
+	
 	private Paint mPaint = new Paint();
 	
 	private ArrayList<Line> mLines = new ArrayList<Line>();
@@ -28,10 +55,8 @@ public class DrawingView extends View {
 	private float mOffsetX = 0f;
 	private float mOffsetY = 0f;
 	
-	private float lastX1 = -1;
-	private float lastY1 = -1;
-	private float lastX2 = -1;
-	private float lastY2 = -1;
+	private Touch touch1 = new Touch();
+	private Touch touch2 = new Touch();
 	
 	
 	private void init() {
@@ -40,7 +65,7 @@ public class DrawingView extends View {
 		mCurLine = new Line(mLineColor, mLineWidth);
 		mLines.add(mCurLine);
 		
-		mPaint.setColor(0xdd00dd);
+		mPaint.setColor(0x00000000);
 	}
 	
 	public DrawingView(Context context) {
@@ -82,43 +107,81 @@ public class DrawingView extends View {
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		
-//		canvas.drawLine(0, 0, 200, 200, mPaint);
-		Log.i("OFFSET", "Translate: "+mOffsetX+"x"+mOffsetY);
 		canvas.translate(mOffsetX, mOffsetY);
+		canvas.scale(mZoomLevel, mZoomLevel);
 		
 		for(Line l : mLines) {
 			l.drawIn(canvas);
 		}
 		
+		Log.i("debug", "dx: "+mOffsetX+"\tdy: "+mOffsetY+"\tscale: "+mZoomLevel);
+		canvas.drawText("dx: "+mOffsetX+"\ndy: "+mOffsetY+"\nscale: "+mZoomLevel, 0, 0, mPaint);
 	}
 
 	
 	private void copyTouches(MotionEvent event) {
-		lastX1 = event.getX();
-		lastY1 = event.getY();
-		
-		lastX2 = event.getX();
-		lastY2 = event.getY();
+		for(int i = 0; i < event.getPointerCount(); i++) {
+			int id = event.getPointerId(i);
+			
+			if(id == touch1.id){
+				touch1.copyToLast();
+				touch1.x = event.getX(i);
+				touch1.y = event.getY(i);
+			} else if(id == touch2.id) {
+				touch2.copyToLast();
+				touch2.x = event.getX(i);
+				touch2.y = event.getY(i);
+			}
+		}
 	}
+	
+	private float distance(float x1, float y1, float x2, float y2) {
+    	double dx = Math.pow(x2 - x1, 2);
+    	double dy = Math.pow(y2 - y1, 2);
+    	return (float)Math.sqrt(dx + dy);
+    }
+	
+	private void move() {
+		if(touch1.id < 0) { 
+			return ; 
+		}
+		
+		mOffsetX += touch1.dx();
+		mOffsetY += touch1.dy();
+		
+		if(touch2.id >= 0) {
+			float dist1 = distance(touch1.lastX, touch1.lastY, touch2.lastX, touch2.lastY);
+	        float dist2 = distance(touch1.x, touch1.y, touch2.x, touch2.y);
+	        mZoomLevel *= dist2 / dist1;
+		}
+		
+
+        invalidate();
+	}
+	
 	/* (non-Javadoc)
 	 * @see android.view.View#onTouchEvent(android.view.MotionEvent)
 	 */
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		int action = event.getActionMasked();
+		int id = event.getPointerId(event.getActionIndex());
 		
 		if(mIsDrawing) {
 			boolean added = false;
+			int convertedX = (int)( (event.getX() / mZoomLevel - mOffsetX) );
+			int convertedY = (int)( (event.getY() / mZoomLevel - mOffsetY) );
+			
 			switch(action) {
-				case MotionEvent.ACTION_DOWN:
-					added = mCurLine.addPoint((int)(event.getX() - mOffsetX), (int)(event.getY() - mOffsetY));
+				case MotionEvent.ACTION_DOWN:		
+					added = mCurLine.addPoint(convertedX, convertedY, mZoomLevel);
 					if(added) {
 						invalidate();
 					}
 					return true;
 				
 				case MotionEvent.ACTION_MOVE:
-					added = mCurLine.addPoint((int)(event.getX() - mOffsetX), (int)(event.getY() - mOffsetY));
+					added = mCurLine.addPoint(convertedX, convertedY, mZoomLevel);
 					if(added) {
 						invalidate();
 					}
@@ -134,26 +197,41 @@ public class DrawingView extends View {
 		} else {
 			switch(action) {
 				case MotionEvent.ACTION_DOWN:
+					touch1.id = id;
 					copyTouches(event);
+					touch1.copyToLast();
 					return true;
 				
 				case MotionEvent.ACTION_MOVE:
-					if(event.getPointerCount() == 1) {
-						mOffsetX -= (lastX1 - event.getX());
-						mOffsetY -= (lastY1 - event.getY());
-						
-						copyTouches(event);
-						invalidate();
-					}
+					copyTouches(event);
+					move();
 					return true;
 	
 				case MotionEvent.ACTION_POINTER_DOWN:
+					if(touch2.id < 0) {
+						touch2.id = id;
+						copyTouches(event);
+						touch2.copyToLast();
+					}
+					return true;
 					
+				case MotionEvent.ACTION_POINTER_UP:
+					if(id == touch2.id) {
+		                touch2.id = -1;
+		            } else if(id == touch1.id) {
+		                // Make what was touch2 now be touch1 by 
+		                // swapping the objects.
+		                Touch t = touch1;
+		                touch1 = touch2;
+		                touch2 = t;
+		                touch2.clearTouch();
+		            }
 					return true;
 					
 				case MotionEvent.ACTION_CANCEL:
 				case MotionEvent.ACTION_UP:
-					
+					touch1.clearTouch();
+					touch2.clearTouch();
 					return true;
 			}
 		}
