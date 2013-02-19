@@ -22,7 +22,7 @@ public class HintSelectionActivity extends Activity {
 	}
 	
 	public void onDone(View view) {
-		Intent intent = new Intent(this, GuessingActivity.class); 
+		Intent intent = new Intent(this, GuessingActivity.class);
     	startActivity(intent);
 	}
 
