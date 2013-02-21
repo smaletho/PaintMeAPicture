@@ -19,7 +19,7 @@
     <string name="timerString">Time Remaining</string>
     <string name="categoryString">Category</string>
     <string name="nameDrawing">Please Name Drawing</string>
-    <string name="submitDrawingText">Submit Drawing</string>
+    <string name="submitDrawingText">Submit</string>
     <string name="lineProperties">Line Color/Width</string>
     <string name="title_activity_color_selected">ColorSelectedActivity</string>
     <string name="title_activity_color_select">ColorSelectActivity</string>
@@ -57,5 +57,11 @@
     <string name="lineColor">Line Color</string>
     <string name="drawing">Draw</string>
     <string name="moving">Move</string>
+    <string name="CategoryText">Category:</string>
+    <string name="Category">BUILDING</string>
+    <string name="p1Score">Player 1:</string>
+    <string name="p2Score">Player 2:</string>
+    <string name="p1ScoreInt">0</string>
+    <string name="p2ScoreInt">0</string>
 
 </resources>

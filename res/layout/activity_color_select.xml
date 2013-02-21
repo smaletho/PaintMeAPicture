@@ -4,24 +4,11 @@
     android:layout_height="match_parent"
     tools:context=".ColorSelectActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
+    <edu.msu.project1.barrelofmonkeys.ColorSelectView
+        android:id="@+id/colorSelectView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="192dp"
-        android:padding="@dimen/paddingTop"
-        android:text="@string/sampleLineText"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="onDone"
-        android:text="@string/doneButton" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>

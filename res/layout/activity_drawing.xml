@@ -13,29 +13,6 @@
         android:onClick="onLineWidth"
         android:padding="@dimen/paddingTop"
         android:text="@string/lineWidth" />
-
-    <Button
-        android:id="@+id/buttonLineColor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/buttonLineWidth"
-        android:onClick="onLineColor"
-        android:text="@string/lineColor" />
-    
-    <ToggleButton
-        android:id="@+id/toggleButtonDraw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/buttonLineColor"
-        android:checked="true"
-        android:onClick="onToggleDraw"
-        android:text="@string/drawing"
-        android:textOff="@string/moving"
-        android:textOn="@string/drawing" />
     
     <Button
         android:id="@+id/donebutton"
@@ -51,8 +28,80 @@
         android:id="@+id/drawingView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonLineWidth"
-        android:layout_alignParentTop="true" />
+        android:layout_above="@+id/toggleButtonDraw" />
 
+    <ToggleButton
+        android:id="@+id/toggleButtonDraw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/donebutton"
+        android:layout_alignLeft="@+id/donebutton"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/buttonLineColor"
+        android:checked="true"
+        android:onClick="onToggleDraw"
+        android:text="@string/drawing"
+        android:textOff="@string/moving"
+        android:textOn="@string/drawing" />
+
+    <Button
+        android:id="@+id/buttonLineColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonLineWidth"
+        android:layout_alignParentLeft="true"
+        android:onClick="onLineColor"
+        android:text="@string/lineColor" />
+
+    <TextView
+        android:id="@+id/categoryText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/darker_gray"
+        android:gravity="center_horizontal"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:text="@string/Category"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/p1Score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/p1Score"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/p2Score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/toggleButtonDraw"
+        android:layout_alignParentTop="true"
+        android:text="@string/p2Score"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/p1ScoreInt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/categoryText"
+        android:layout_alignBottom="@+id/categoryText"
+        android:layout_alignRight="@+id/p1Score"
+        android:text="@string/p1ScoreInt"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/p2ScoreInt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/categoryText"
+        android:layout_alignBottom="@+id/categoryText"
+        android:layout_alignRight="@+id/p2Score"
+        android:text="@string/p2ScoreInt"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
     
 </RelativeLayout>

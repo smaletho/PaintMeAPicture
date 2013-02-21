@@ -31,8 +31,8 @@
             android:label="@string/title_activity_guessing" >
         </activity>
         <activity
-            android:name="edu.msu.project1.barrelofmonkeys.ColorSelectedActivity"
-            android:label="@string/title_activity_color_selected" >
+            android:name="edu.msu.project1.barrelofmonkeys.ColorSelectActivity"
+            android:label="@string/title_activity_color_select" >
         </activity>
         <activity
             android:name="edu.msu.project1.barrelofmonkeys.LineSelectActivity"
