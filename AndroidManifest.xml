@@ -50,6 +50,10 @@
             android:name="edu.msu.project1.barrelofmonkeys.ScoreActivity"
             android:label="@string/title_activity_score" >
         </activity>
+        <activity
+            android:name="edu.msu.project1.barrelofmonkeys.GameManagerActivity"
+            android:label="@string/title_activity_game_manager" >
+        </activity>
     </application>
 
 </manifest>

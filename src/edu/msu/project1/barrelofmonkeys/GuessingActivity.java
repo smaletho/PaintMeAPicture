@@ -42,7 +42,19 @@ public class GuessingActivity extends Activity {
 		private TextView timerText;
 
 		private TextView hintText;
+		
+		private TextView categoryText;
+		
+		private GameManager gameManager;
 
+	}
+	
+	public GameManager getGameManager() {
+		return params.gameManager;
+	}
+
+	public void setGameManager(GameManager gameManager) {
+		params.gameManager = gameManager;
 	}
 
 	public void setHintText(TextView view) {
@@ -55,6 +67,10 @@ public class GuessingActivity extends Activity {
 
 	public void setEditText(EditText text) {
 		params.et1 = text;
+	}
+	
+	public void setCategoryText(TextView view) {
+		params.categoryText = view;
 	}
 
 	public int getPlayer1Score() {
@@ -116,6 +132,7 @@ public class GuessingActivity extends Activity {
         else {
     		params.et1 = (EditText)findViewById(R.id.guessBox);
     		params.timerText = (TextView)findViewById(R.id.timerText);
+    		params.categoryText = (TextView)findViewById(R.id.categoryText);
     		setTimeRemaining(params.startTime);
     		
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -133,7 +150,11 @@ public class GuessingActivity extends Activity {
 		params.countDownTimer = new GuessingCountDownTimer(params.startTime, params.interval);
 		params.timerText = (TextView)findViewById(R.id.timerText);
 		params.hintText = (TextView)findViewById(R.id.hintText);
+		params.categoryText = (TextView)findViewById(R.id.categoryText);
 		params.et1 = (EditText)findViewById(R.id.guessBox);
+		params.gameManager = GameManager.get();
+		params.pictureHint = params.gameManager.getGameHint();
+		//params.pictureSolution = params.gameManager.getGameSolution();
 	}
 
 	public void isCorrect(View view) {
@@ -206,8 +227,14 @@ public class GuessingActivity extends Activity {
 	}
 
 	public void goToScoreActivity() {
-		Intent intent = new Intent(this, ScoreActivity.class);
-		startActivity(intent);
+		params.gameManager.setGameRound();
+		if(params.gameManager.getGameRound() == 4) {
+			Intent intent = new Intent(this, ScoreActivity.class);
+			startActivity(intent);
+		} else {
+			Intent intent = new Intent(this, DrawingActivity.class);
+			startActivity(intent);
+		}
 	}
 
 	public void timeExpired() {
@@ -247,6 +274,8 @@ public class GuessingActivity extends Activity {
     	setEditText(params.et1);
     	setTimerText(params.timerText);
     	setHintText(params.hintText);
+    	setCategoryText(params.categoryText);
+    	setGameManager(params.gameManager);
 
     }
     

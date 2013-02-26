@@ -1,7 +1,5 @@
 package edu.msu.project1.barrelofmonkeys;
 
-import java.io.Serializable;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -42,17 +40,18 @@ public class MainActivity extends Activity {
 	public void onStart(View view) {
 		EditText pl1 = (EditText)findViewById(R.id.player1name);
 		EditText pl2 = (EditText)findViewById(R.id.player2name);
+
+		GameManager manager = new GameManager();
+		manager.setPlayer1name(pl1.toString());
+		manager.setPlayer2name(pl2.toString());
+		
 		Intent intent = new Intent(this, DrawingActivity.class);
 		startActivity(intent);
-
-		//params.player1name = pl1.getText().toString();
-		//params.player2name = pl2.getText().toString();
 	}
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        
         
     }
     

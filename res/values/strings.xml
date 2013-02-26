@@ -28,12 +28,12 @@
     <string name="doneButton">Done</string>
     <string name="drawingNamePlaceholder">Name of drawing</string>
     <string name="switchToGuessTitle">Pass the device to the other player!</string>
-   	<string name="ok">Okay!</string>
-   	<string name="correctGuess">You got it!</string>
-   	<string name="guessAgain">Nope! Guess again!</string>
-   	<string name="timeExpired">You ran out of time!</string>
-   	<string name="howToPlayTitle">How To Play</string>
-   	<string name="howToPlayText">Enter both players\' names and click "Let\'s Play".\n\n
+    <string name="ok">Okay!</string>
+    <string name="correctGuess">You got it!</string>
+    <string name="guessAgain">Nope! Guess again!</string>
+    <string name="timeExpired">You ran out of time!</string>
+    <string name="howToPlayTitle">How To Play</string>
+    <string name="howToPlayText">Enter both players\' names and click "Let\'s Play".\n\n
    	    						 Player 1 draws a picture from the associated category.\n\n
    	    						 Player 1 enters the answer to the picture, then an associated hint.\n\n
    	    						 The device is then passed to Player 2.\n\n
@@ -52,7 +52,6 @@
     <string name="title_activity_correct_guess">CorrectGuessActivity</string>
     <string name="title_activity_score">ScoreActivity</string>
     <string name="playAgainString">Play Again!</string>
-    
     <string name="lineWidth">Line Width</string>
     <string name="lineColor">Line Color</string>
     <string name="drawing">Draw</string>
@@ -63,5 +62,7 @@
     <string name="p2Score">Player 2:</string>
     <string name="p1ScoreInt">0</string>
     <string name="p2ScoreInt">0</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_game_manager">GameManagerActivity</string>
 
 </resources>
