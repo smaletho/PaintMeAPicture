@@ -7,20 +7,23 @@ When you have completed the project, complete the following form and include it 
 
 Names of all classes responsible for storing the drawing:
 
-	DrawingView.java
+	class DrawingView
+	class Touch
+	class Line
 
 Member 1: Thomas Smale
 
 Responsiblity: Guessing Activity
 	GuessingActivity.java
 	ScoreActivity.java
-
+	GameManager.java
 
 
 Member 2: Clay Reimann
 
 Responsiblity: Drawing View
 	DrawingView.java
+	Line.Java
 
 
 
@@ -28,9 +31,7 @@ Member 3: Phil Getzen
 
 Responsiblity: Drawing Activity
 	DrawingActivity.java
-	HintSelectionActivity.java
-	HintSelectionView.java
-	LineSelectActivity.java
-	LineSelectView.java
+	ColorSelectActivity.Java
+	ColorSelectView.Java
 
 

@@ -237,7 +237,7 @@ public class GuessingActivity extends Activity {
 
 	public void goToScoreActivity() {
 		params.gameManager.setGameRound();
-		int score = (int)params.countDownTimer.getTimeRemaining() / 1000;
+		int score = (int)params.startTime / 1000;
 		if(params.gameManager.getCurrentPlayer() == 1) {
 			params.gameManager.setPlayer1score(score);
 		}
@@ -245,7 +245,7 @@ public class GuessingActivity extends Activity {
 			params.gameManager.setPlayer2score(score);
 		}
 		params.gameManager.switchPlayers();
-		if(params.gameManager.getGameRound() == params.gameManager.getNumRounds()) {
+		if(params.gameManager.getGameRound() == params.gameManager.getNumRounds() + 1) {
 			Intent intent = new Intent(getBaseContext(), ScoreActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

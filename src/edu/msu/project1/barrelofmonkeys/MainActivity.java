@@ -40,6 +40,8 @@ public class MainActivity extends Activity {
 		roundDisplayToast = Toast.makeText(this, "Number of Rounds: 1", Toast.LENGTH_SHORT);
 		roundDisplayToast.show();
 		
+		manager.setNumRounds(2);
+		
 		SeekBar seekBar = (SeekBar) findViewById(R.id.roundSlider);
 		seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 			
@@ -59,8 +61,7 @@ public class MainActivity extends Activity {
 			public void onProgressChanged(SeekBar seekBar, int progress,
 					boolean fromUser) {
 				// TODO Auto-generated method stub
-				if (progress > 0)
-				{
+				if (progress > 0) {
 					manager.setNumRounds(progress * 2);
 					roundDisplayToast.setText("Number of Rounds: " + progress);
 				}
@@ -85,12 +86,12 @@ public class MainActivity extends Activity {
 		EditText pl1 = (EditText)findViewById(R.id.player1name);
 		EditText pl2 = (EditText)findViewById(R.id.player2name);
 		
-		if(pl1.getText().equals("") || pl2.getText().equals("")){
+		if(pl1.getText().toString().equals("") || pl2.getText().toString().equals("")){
 			Toast.makeText(getApplicationContext(), "You must enter names!", Toast.LENGTH_SHORT).show();
 		}
 		else{
-			manager.setPlayer1name(pl1.toString());
-			manager.setPlayer2name(pl2.toString());
+			manager.setPlayer1name(pl1.getText().toString());
+			manager.setPlayer2name(pl2.getText().toString());
 			
 			Intent intent = new Intent(this, DrawingActivity.class);
 			startActivity(intent);

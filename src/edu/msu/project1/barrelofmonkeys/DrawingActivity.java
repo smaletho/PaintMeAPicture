@@ -10,20 +10,15 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.InputType;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 public class DrawingActivity extends Activity {
 
@@ -32,7 +27,9 @@ public class DrawingActivity extends Activity {
 	 */
 	private DrawingView drawingView;
 	
-	private TextView categoryChoice;
+	private TextView p1IntScore;
+	
+	private TextView p2IntScore;
 	
 	private boolean isDrawing = true;
 	
@@ -54,17 +51,7 @@ public class DrawingActivity extends Activity {
 		public static Category randomChoice() {
 			return VALUES.get(RANDOM.nextInt(SIZE));
 		}
-		
 	}
-	
-	
-	/*
-	 * The players
-	 */
-	//private Players players = new Players();
-	
-	//Make a button so that when they're done, it passes the drawing,
-	//the hint and the answer to the guessing activity
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,9 +62,17 @@ public class DrawingActivity extends Activity {
 		
 		drawingView = (DrawingView) this.findViewById(R.id.drawingView);
 		
-		categoryChoice = (TextView) this.findViewById(R.id.categoryText);
+		params.categoryChoice = (TextView) this.findViewById(R.id.categoryText);
+		params.categoryChoice.setText(Category.randomChoice().toString());
+		gameManager.setCategory(params.categoryChoice.getText().toString());
 		
-		categoryChoice.setText(Category.randomChoice().toString());
+		p1IntScore = (TextView) this.findViewById(R.id.p1ScoreInt);
+		p2IntScore = (TextView) this.findViewById(R.id.p2ScoreInt);
+		
+		
+		p1IntScore.setText("" + gameManager.getPlayer1score());
+		p2IntScore.setText("" + gameManager.getPlayer2score());
+		
 		
 		if(savedInstanceState != null) {
 			drawingView.loadDrawing(savedInstanceState);
@@ -133,7 +128,7 @@ public class DrawingActivity extends Activity {
 				gameManager.setGameSolution(params.nameText);
 				params.hintText = hint.getText().toString();
 				gameManager.setGameHint(params.hintText);
-				gameManager.setCategory(categoryChoice.getText().toString());
+				gameManager.setCategory(params.categoryChoice.getText().toString());
 				
 				if(params.nameText.equals("") || params.hintText.equals("")){
 					Toast.makeText(getApplicationContext(), "You must set a title and a hint", Toast.LENGTH_SHORT).show();
@@ -206,7 +201,6 @@ public class DrawingActivity extends Activity {
 		drawingView.toggleDraw(isDrawing);
 		
 	}
-	private static final String PARAMETERS = "parameters";
 
 	private static class Parameters implements Serializable {
 
@@ -214,6 +208,7 @@ public class DrawingActivity extends Activity {
 
 		private String nameText;
 		private String hintText;
+		private TextView categoryChoice;
 
 	}
     /**

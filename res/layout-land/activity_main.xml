@@ -19,7 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/button2"
-            android:layout_alignLeft="@+id/button1" />
+            android:layout_alignLeft="@+id/button1"
+            android:max="@integer/max"
+            android:progress="@integer/progress1" />
 
         <EditText
             android:id="@+id/player1name"
