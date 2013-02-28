@@ -131,6 +131,7 @@ public class GuessingActivity extends Activity {
     		
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle(R.string.switchToGuessTitle);
+			builder.setCancelable(false);
 			builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 		           public void onClick(DialogInterface dialog, int id) {
 		        	   params.countDownTimer.start();
@@ -141,6 +142,8 @@ public class GuessingActivity extends Activity {
 			dialog.show();
         }
 
+        params.userDrawing = (DrawingView) this.findViewById(R.id.drawingView1);
+        
 		params.countDownTimer = new GuessingCountDownTimer(params.startTime, params.interval);
 		params.timerText = (TextView)findViewById(R.id.timerText);
 		params.hintText = (TextView)findViewById(R.id.hintText);
@@ -151,7 +154,7 @@ public class GuessingActivity extends Activity {
 		params.gameManager = GameManager.get();
 		params.pictureHint = params.gameManager.getGameHint();
 		params.pictureSolution = params.gameManager.getGameSolution();
-		params.userDrawing = params.gameManager.getDrawingView();
+		params.userDrawing.loadDrawing(getIntent().getExtras());
 		params.categoryText.setText(params.gameManager.getCategory());
 		
 		int p1 = params.gameManager.getPlayer1score();
@@ -159,6 +162,8 @@ public class GuessingActivity extends Activity {
 		
 		params.p1score.setText("P1: " + p1);
 		params.p2score.setText("P2: " + p2);
+		
+		
 	}
 
 	public void isCorrect(View view) {
@@ -240,7 +245,7 @@ public class GuessingActivity extends Activity {
 			params.gameManager.setPlayer2score(score);
 		}
 		params.gameManager.switchPlayers();
-		if(params.gameManager.getGameRound() == 3) {
+		if(params.gameManager.getGameRound() == params.gameManager.getNumRounds()) {
 			Intent intent = new Intent(getBaseContext(), ScoreActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

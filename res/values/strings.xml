@@ -64,5 +64,6 @@
     <string name="p2ScoreInt">0</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_game_manager">GameManagerActivity</string>
+    <string name="roundText">Number of Rounds:</string>
 
 </resources>

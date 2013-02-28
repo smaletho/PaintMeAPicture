@@ -8,9 +8,12 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
+	
+	private GameManager manager;
 
 	/*private static class Parameters implements Serializable {
 
@@ -19,6 +22,8 @@ public class MainActivity extends Activity {
 		private String player1name;
 		private String player2name;
 	}*/
+	
+	public Toast roundDisplayToast = null;
 
     /**
      * The current parameters
@@ -29,6 +34,44 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		manager = new GameManager();
+		
+		roundDisplayToast = Toast.makeText(this, "Number of Rounds: 1", Toast.LENGTH_SHORT);
+		roundDisplayToast.show();
+		
+		SeekBar seekBar = (SeekBar) findViewById(R.id.roundSlider);
+		seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+			
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress,
+					boolean fromUser) {
+				// TODO Auto-generated method stub
+				if (progress > 0)
+				{
+					manager.setNumRounds(progress * 2);
+					roundDisplayToast.setText("Number of Rounds: " + progress);
+				}
+				else{
+					seekBar.setProgress(1);
+				}
+				roundDisplayToast.show();
+			}
+		});
+		
+		
 	}
 
 	@Override
@@ -46,7 +89,6 @@ public class MainActivity extends Activity {
 			Toast.makeText(getApplicationContext(), "You must enter names!", Toast.LENGTH_SHORT).show();
 		}
 		else{
-			GameManager manager = new GameManager();
 			manager.setPlayer1name(pl1.toString());
 			manager.setPlayer2name(pl2.toString());
 			

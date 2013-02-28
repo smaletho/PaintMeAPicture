@@ -10,9 +10,9 @@ public class GameManager {
 	private int gameRound;
 	private int player1score;
 	private int player2score;
-	private DrawingView drawingView;
 	private String category;
 	private Round round;
+	private int numRounds;
 	private static GameManager gameManager;
 	private int currentPlayer;
 	
@@ -31,14 +31,6 @@ public class GameManager {
 	
 	public static GameManager get() {
 		return gameManager;
-	}
-	
-	public DrawingView getDrawingView() {
-		return drawingView;
-	}
-
-	public void setDrawingView(DrawingView drawingView) {
-		this.drawingView = drawingView;
 	}
 
 	public void set(GameManager game) {
@@ -137,7 +129,6 @@ public class GameManager {
 
 	public GameManager() {
 		gameManager = this;
-		drawingView = null;
 		player1name = null;
 		player2name = null;
 		gameHint = null;
@@ -148,6 +139,14 @@ public class GameManager {
 		category = null;
 		round = null;
 		currentPlayer = 2;
+	}
+
+	public int getNumRounds() {
+		return numRounds;
+	}
+
+	public void setNumRounds(int numRounds) {
+		this.numRounds = numRounds;
 	}
 
 }

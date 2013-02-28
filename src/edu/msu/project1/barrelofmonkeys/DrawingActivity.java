@@ -134,13 +134,15 @@ public class DrawingActivity extends Activity {
 				params.hintText = hint.getText().toString();
 				gameManager.setGameHint(params.hintText);
 				gameManager.setCategory(categoryChoice.getText().toString());
-				drawingView.setDrawing(false);
-				gameManager.setDrawingView(drawingView);
+				
 				if(params.nameText.equals("") || params.hintText.equals("")){
 					Toast.makeText(getApplicationContext(), "You must set a title and a hint", Toast.LENGTH_SHORT).show();
 				}
 				else{
 					Intent intent = new Intent(getBaseContext(), GuessingActivity.class);
+					Bundle b = new Bundle();
+					drawingView.saveDrawing(b);
+					intent.putExtras(b);
 					intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -148,7 +150,7 @@ public class DrawingActivity extends Activity {
 				}
 			}
 		});
-		
+		alert_builder.setCancelable(false);
 		alert_builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 			
 			@Override
