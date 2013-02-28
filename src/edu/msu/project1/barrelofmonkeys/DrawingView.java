@@ -58,6 +58,10 @@ public class DrawingView extends View {
 	private Touch touch1 = new Touch();
 	private Touch touch2 = new Touch();
 	
+	public void setDrawing(boolean flag) {
+		mIsDrawing = flag;
+	}
+	
 	
 	private void init() {
 		mLineWidth = 4.0f;

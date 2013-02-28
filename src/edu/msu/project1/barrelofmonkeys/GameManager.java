@@ -2,7 +2,6 @@ package edu.msu.project1.barrelofmonkeys;
 
 public class GameManager {
 	
-	private enum Category { Animal, Building, Object, Action, MSU };
 	private enum Round { Drawing, Guessing };
 	private String player1name;
 	private String player2name;
@@ -12,9 +11,23 @@ public class GameManager {
 	private int player1score;
 	private int player2score;
 	private DrawingView drawingView;
-	private Category category;
+	private String category;
 	private Round round;
 	private static GameManager gameManager;
+	private int currentPlayer;
+	
+	public int getCurrentPlayer() {
+		return currentPlayer;
+	}
+	
+	public void switchPlayers() {
+		if(currentPlayer == 1) {
+			currentPlayer = 2;
+		} 
+		else {
+			currentPlayer = 1;
+		}
+	}
 	
 	public static GameManager get() {
 		return gameManager;
@@ -52,12 +65,12 @@ public class GameManager {
 	}
 
 
-	public Category getCategory() {
+	public String getCategory() {
 		return category;
 	}
 
 
-	public void setCategory(Category category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 
@@ -88,7 +101,7 @@ public class GameManager {
 
 
 	public void setGameSolution(String gameSolution) {
-		this.gameSolution = gameSolution;
+		this.gameSolution = gameSolution.toUpperCase();
 	}
 
 
@@ -108,7 +121,7 @@ public class GameManager {
 
 
 	public void setPlayer1score(int player1score) {
-		this.player1score = player1score;
+		this.player1score += player1score;
 	}
 
 
@@ -118,7 +131,7 @@ public class GameManager {
 
 
 	public void setPlayer2score(int player2score) {
-		this.player2score = player2score;
+		this.player2score += player2score;
 	}
 
 
@@ -134,6 +147,7 @@ public class GameManager {
 		player2score = 0;
 		category = null;
 		round = null;
+		currentPlayer = 2;
 	}
 
 }

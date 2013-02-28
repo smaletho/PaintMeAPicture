@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -40,13 +41,18 @@ public class MainActivity extends Activity {
 	public void onStart(View view) {
 		EditText pl1 = (EditText)findViewById(R.id.player1name);
 		EditText pl2 = (EditText)findViewById(R.id.player2name);
-
-		GameManager manager = new GameManager();
-		manager.setPlayer1name(pl1.toString());
-		manager.setPlayer2name(pl2.toString());
 		
-		Intent intent = new Intent(this, DrawingActivity.class);
-		startActivity(intent);
+		if(pl1.getText().equals("") || pl2.getText().equals("")){
+			Toast.makeText(getApplicationContext(), "You must enter names!", Toast.LENGTH_SHORT).show();
+		}
+		else{
+			GameManager manager = new GameManager();
+			manager.setPlayer1name(pl1.toString());
+			manager.setPlayer2name(pl2.toString());
+			
+			Intent intent = new Intent(this, DrawingActivity.class);
+			startActivity(intent);
+		}
 	}
 
     @Override

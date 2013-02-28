@@ -38,6 +38,8 @@ public class DrawingActivity extends Activity {
 	
 	private static final int GOT_COLOR = 2;
 	
+	private GameManager gameManager;
+	
 	public enum Category{
 		ANIMAL,
 		BUILDING,
@@ -52,7 +54,9 @@ public class DrawingActivity extends Activity {
 		public static Category randomChoice() {
 			return VALUES.get(RANDOM.nextInt(SIZE));
 		}
+		
 	}
+	
 	
 	/*
 	 * The players
@@ -66,6 +70,8 @@ public class DrawingActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_drawing);
+		
+		gameManager = GameManager.get();
 		
 		drawingView = (DrawingView) this.findViewById(R.id.drawingView);
 		
@@ -124,12 +130,20 @@ public class DrawingActivity extends Activity {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				params.nameText = name.getText().toString();
+				gameManager.setGameSolution(params.nameText);
 				params.hintText = hint.getText().toString();
+				gameManager.setGameHint(params.hintText);
+				gameManager.setCategory(categoryChoice.getText().toString());
+				drawingView.setDrawing(false);
+				gameManager.setDrawingView(drawingView);
 				if(params.nameText.equals("") || params.hintText.equals("")){
 					Toast.makeText(getApplicationContext(), "You must set a title and a hint", Toast.LENGTH_SHORT).show();
 				}
 				else{
 					Intent intent = new Intent(getBaseContext(), GuessingActivity.class);
+					intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 					startActivity(intent);
 				}
 			}

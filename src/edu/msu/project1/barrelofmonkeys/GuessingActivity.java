@@ -21,9 +21,9 @@ public class GuessingActivity extends Activity {
 
 		private static final long serialVersionUID = 1L;
 
-		private String pictureHint = "I'm a hint!";
+		private String pictureHint;
 
-		private String pictureSolution = "test";
+		private String pictureSolution;
 
 		private DrawingView userDrawing;
 
@@ -32,10 +32,6 @@ public class GuessingActivity extends Activity {
 		private final long interval = 1000;
 
 		private GuessingCountDownTimer countDownTimer;
-
-		private int player1Score;
-
-		private int player2Score;
 
 		private EditText et1;
 
@@ -46,7 +42,19 @@ public class GuessingActivity extends Activity {
 		private TextView categoryText;
 		
 		private GameManager gameManager;
+		
+		private TextView p1score;
+		
+		private TextView p2score;
 
+	}
+	
+	private void setPlayer1ScoreText(TextView view) {
+		params.p1score = view;
+	}
+	
+	private void setPlayer2ScoreText(TextView view) {
+		params.p2score = view;
 	}
 	
 	public GameManager getGameManager() {
@@ -71,22 +79,6 @@ public class GuessingActivity extends Activity {
 	
 	public void setCategoryText(TextView view) {
 		params.categoryText = view;
-	}
-
-	public int getPlayer1Score() {
-		return params.player1Score;
-	}
-
-	public void setPlayer1Score(int player1Score) {
-		params.player1Score = player1Score;
-	}
-
-	public int getPlayer2Score() {
-		return params.player2Score;
-	}
-
-	public void setPlayer2Score(int player2Score) {
-		params.player2Score = player2Score;
 	}
 
 	public String getPictureHint() {
@@ -133,6 +125,8 @@ public class GuessingActivity extends Activity {
     		params.et1 = (EditText)findViewById(R.id.guessBox);
     		params.timerText = (TextView)findViewById(R.id.timerText);
     		params.categoryText = (TextView)findViewById(R.id.categoryText);
+    		params.p1score = (TextView)findViewById(R.id.textView1);
+    		params.p2score = (TextView)findViewById(R.id.textView2);
     		setTimeRemaining(params.startTime);
     		
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -152,14 +146,24 @@ public class GuessingActivity extends Activity {
 		params.hintText = (TextView)findViewById(R.id.hintText);
 		params.categoryText = (TextView)findViewById(R.id.categoryText);
 		params.et1 = (EditText)findViewById(R.id.guessBox);
+		params.p1score = (TextView)findViewById(R.id.textView1);
+		params.p2score = (TextView)findViewById(R.id.textView2);
 		params.gameManager = GameManager.get();
 		params.pictureHint = params.gameManager.getGameHint();
-		//params.pictureSolution = params.gameManager.getGameSolution();
+		params.pictureSolution = params.gameManager.getGameSolution();
+		params.userDrawing = params.gameManager.getDrawingView();
+		params.categoryText.setText(params.gameManager.getCategory());
+		
+		int p1 = params.gameManager.getPlayer1score();
+		int p2 = params.gameManager.getPlayer2score();
+		
+		params.p1score.setText("P1: " + p1);
+		params.p2score.setText("P2: " + p2);
 	}
 
 	public void isCorrect(View view) {
 
-		if(params.et1.getText().toString().equals(params.pictureSolution)){
+		if(params.et1.getText().toString().toUpperCase().equals(params.pictureSolution)){
 			params.countDownTimer.cancel();
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle(R.string.correctGuess);
@@ -213,7 +217,7 @@ public class GuessingActivity extends Activity {
 			int timeLeft = (int)(millisUntilFinished / 1000);
 			params.timerText.setText("Time Remaining: " + timeLeft + " seconds");
 
-			if (millisUntilFinished <= 70000) {
+			if (millisUntilFinished <= 60000) {
 				params.hintText.setText("Hint: " + params.pictureHint);
 			}
 			else {
@@ -228,18 +232,34 @@ public class GuessingActivity extends Activity {
 
 	public void goToScoreActivity() {
 		params.gameManager.setGameRound();
-		if(params.gameManager.getGameRound() == 4) {
-			Intent intent = new Intent(this, ScoreActivity.class);
+		int score = (int)params.countDownTimer.getTimeRemaining() / 1000;
+		if(params.gameManager.getCurrentPlayer() == 1) {
+			params.gameManager.setPlayer1score(score);
+		}
+		else {
+			params.gameManager.setPlayer2score(score);
+		}
+		params.gameManager.switchPlayers();
+		if(params.gameManager.getGameRound() == 3) {
+			Intent intent = new Intent(getBaseContext(), ScoreActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 			startActivity(intent);
 		} else {
-			Intent intent = new Intent(this, DrawingActivity.class);
+			Intent intent = new Intent(getBaseContext(), DrawingActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 			startActivity(intent);
 		}
 	}
 
 	public void timeExpired() {
+				
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(R.string.timeExpired);
+		builder.setMessage("Correct answer was: " + params.gameManager.getGameSolution());
 		builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 	           public void onClick(DialogInterface dialog, int id) {
 	       			goToScoreActivity();
@@ -269,13 +289,13 @@ public class GuessingActivity extends Activity {
     	
         // Ensure the options are all set
     	setTimeRemaining(params.startTime);
-    	setPlayer1Score(params.player1Score);
-    	setPlayer2Score(params.player2Score);
     	setEditText(params.et1);
     	setTimerText(params.timerText);
     	setHintText(params.hintText);
     	setCategoryText(params.categoryText);
     	setGameManager(params.gameManager);
+    	setPlayer1ScoreText(params.p1score);
+    	setPlayer2ScoreText(params.p2score);
 
     }
     
